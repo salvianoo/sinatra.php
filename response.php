@@ -18,8 +18,8 @@ class Response
         header('Content-Type: application/json');
 
         if (! is_null($this->callback)) {
-            $closureObject = $this->callback;
-            return $formatter->format($closureObject());
+            $closureCallback = $this->callback;
+            return $formatter->format($closureCallback());
         }
         return $formatter->format('Request Not Found');
     }

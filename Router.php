@@ -29,13 +29,14 @@ class Router
     public static function init()
     {
         $request  = new Request();
+        $requestUri = $request->getUri();
 
         $response = new Response(array(
             'statusCode' => 404,
         ));
 
-        if (array_key_exists($request->getUri(), self::$callbacks)) {
-            $requestedCallback = self::$callbacks[$request->getUri()];
+        if (array_key_exists($requestUri, self::$callbacks)) {
+            $requestedCallback = self::$callbacks[$requestUri];
 
             $response = new Response([
                 'callback' => $requestedCallback
