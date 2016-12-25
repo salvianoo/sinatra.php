@@ -9,11 +9,11 @@ require 'JsonResponse.php';
 class Router
 {
     public static $callbacks = [];
+    public static $rootUri = '/app.php';
+
     public static function addRoute($uri, $callback)
     {
-        $rootUri = '/app.php';
-
-        $uriKey = $rootUri . $uri;
+        $uriKey = self::$rootUri . $uri;
         self::$callbacks[$uriKey] = $callback;
     }
 
