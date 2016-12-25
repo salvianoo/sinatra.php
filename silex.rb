@@ -3,6 +3,7 @@ class Silex
     @@callbacks = []
   end
 
+  # maybe use delegate
   def get(uri, callback)
     add_route(uri, callback)
   end
