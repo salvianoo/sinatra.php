@@ -31,9 +31,9 @@ class Router
         $request  = new Request();
         $requestUri = $request->getUri();
 
-        $response = new Response(array(
+        $response = new Response([
             'statusCode' => 404,
-        ));
+        ]);
 
         if (array_key_exists($requestUri, self::$callbacks)) {
             $requestedCallback = self::$callbacks[$requestUri];
