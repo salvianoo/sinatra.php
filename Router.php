@@ -2,19 +2,19 @@
 
 // Use namespace
 // namespace Sinatra
-require 'response.php';
-require 'request.php';
+require 'Response.php';
+require 'Request.php';
+require 'JsonResponse.php';
 
 class Router
 {
     public static $callbacks = [];
     public static function addRoute($uri, $callback)
     {
-        $rootUri = '/routes.php';
+        $rootUri = '/app.php';
 
         $uriKey = $rootUri . $uri;
         self::$callbacks[$uriKey] = $callback;
-        // self::$callbacks[] = array($uriKey => $callback);
     }
 
     public static function get($uri, $callback)
@@ -40,15 +40,15 @@ class Router
             $response = new Response([
                 'callback' => $requestedCallback
             ]);
-            return $response->write();
+            return $response->write(new JsonResponse);
         }
-        return $response->write();
+        return $response->write(new JsonResponse);
     }
 }
 // if (HTTP_METHOD === 'POST') {
-//     
+//
 // }
 // if (HTTP_METHOD === 'GET') {
-//     $queryString = 
+//     $queryString =
 // }
 

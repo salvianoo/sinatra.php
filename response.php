@@ -12,14 +12,15 @@ class Response
         $this->statusCode = isset($params['statusCode']) ? $params['statusCode'] : 200;
     }
 
-    public function write(): string
+    //IoC 
+    public function write(IFormatter $formatter): string
     {
         header('Content-Type: application/json');
         
         if (! is_null($this->callback)) {
             $closureObject = $this->callback;
-            return json_encode($closureObject());
+            return $formatter->format($closureObject());
         } 
-        return json_encode('Request Not Found');
+        return $formatter->format('Request Not Found');
     }
 }

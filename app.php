@@ -1,7 +1,7 @@
 <?php
 
 //use \Sinatra;
-require 'sinatra.php';
+require 'Router.php';
 
 $artists = [
     array('nome' => 'The Beatles'),
