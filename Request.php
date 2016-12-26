@@ -2,20 +2,13 @@
 
 class Request
 {
-    private $uri;
-    public function __construct()
+    public function getHttpMethod()
     {
-        $this->uri    = $_SERVER['REQUEST_URI'];
-        $this->method = $_SERVER['REQUEST_METHOD'];
+        return $_SERVER['REQUEST_METHOD'];
     }
 
     public function getUri()
     {
-        return $this->uri;
-    }
-
-    public function getHttpMethod()
-    {
-       return $this->method;
+        return $_SERVER['REQUEST_URI'];
     }
 }
