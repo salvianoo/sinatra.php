@@ -29,7 +29,7 @@ class Router
 
     public static function init()
     {
-        $request  = new Request();
+        $request = new Request();
         $requestUri = $request->getUri();
         $httpMethod = $request->getHttpMethod();
 
@@ -37,14 +37,22 @@ class Router
             'statusCode' => 404,
         ]);
 
+        // TODO
+        // /app.php/artists/{$id} should match to /app.php/artists/11
         if (array_key_exists($requestUri, self::$callbacks[$httpMethod])) {
             $requestedCallback = self::$callbacks[$httpMethod][$requestUri];
 
             $response = new Response([
-                'callback' => $requestedCallback
+                'callback' => $requestedCallback,
+                'callbackArgs' => self::extractUriParams($requestUri)
             ]);
             return $response->write(new JsonResponse);
         }
         return $response->write(new JsonResponse);
+    }
+
+    public static function extractUriParams($uri)
+    {
+        return explode('/', $uri)[2];
     }
 }

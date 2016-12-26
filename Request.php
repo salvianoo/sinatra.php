@@ -11,4 +11,9 @@ class Request
     {
         return $_SERVER['REQUEST_URI'];
     }
+
+    public function getInput()
+    {
+        return $_POST;
+    }
 }
