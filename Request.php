@@ -5,7 +5,7 @@ class Request
     private $uri;
     public function __construct()
     {
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri    = $_SERVER['REQUEST_URI'];
         $this->method = $_SERVER['REQUEST_METHOD'];
     }
 

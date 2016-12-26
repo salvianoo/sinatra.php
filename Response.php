@@ -4,7 +4,6 @@ class Response
 {
     private $statusCode;
     private $callback;
-    private $requestUri;
 
     public function __construct($params)
     {
