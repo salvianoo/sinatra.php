@@ -11,7 +11,7 @@ $artists = [
 
 Router::get('/lineup', function() use ($artists) {
     return [
-        'artists' => $artists
+        'lineup' => $artists
     ];
 });
 
